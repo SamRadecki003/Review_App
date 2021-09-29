@@ -68,17 +68,21 @@ export default function SingleReview(props) {
             {date}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button
-            size="small"
-            variant="contained"
-            color="primary"
-            fullWidth
-            onClick={() => history.push(`/${props.review.id}`)}
-          >
-            Details
-          </Button>
-        </CardActions>
+        {props.button ? (
+          <CardActions>
+            <Button
+              size="small"
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={() => history.push(`/${props.review.id}`)}
+            >
+              Details
+            </Button>
+          </CardActions>
+        ) : (
+          " "
+        )}
       </Card>
     </Link>
   );

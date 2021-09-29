@@ -48,7 +48,7 @@ export default function Home() {
         {reviews.length !== 0 ? (
           reviews.slice(pageStart, pageEnd).map((review) => (
             <Grid item key={review.id} xs={12} md={6} lg={4}>
-              <SingleReview review={review} />
+              <SingleReview review={review} button={true}/>
             </Grid>
           ))
         ) : (
