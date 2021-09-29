@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import StarRatings from "react-star-ratings";
 import {
   Typography,
   Card,
@@ -27,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 25,
-    color: "pink",
     alignItems: "center",
   },
 }));
@@ -42,7 +42,14 @@ export default function SingleReview(props) {
         <Typography className={classes.title} gutterBottom>
           {props.review.place}
         </Typography>
-        <Typography sx={{ mb: 1.5 }}>rating: {props.review.rating}</Typography>
+        <StarRatings
+          rating={props.review.rating}
+          starRatedColor="#FFD700"
+          numberOfStars={5}
+          starDimension="30px"
+          starSpacing="5px"
+          name="rating"
+        />
         <Typography variant="body2" className={classes.content}>
           {props.review.content}
         </Typography>
