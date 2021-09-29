@@ -6,7 +6,7 @@ Design and implement an application that lists reviews and allows a user to sele
 
 ## Review Detail Page Specs:
 
-- [] A view with a list of reviews
+- [x] A view with a list of reviews
   - Review rating is visible
   - Review published_at is visible
   - Review author is visible

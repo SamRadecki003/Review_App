@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home"
+import Home from "./components/Home";
+import IndividualReview from "./components/IndividualReview";
 
 const App = () => {
   return (
@@ -10,7 +11,8 @@ const App = () => {
         <Navbar />
         <main>
           <Switch>
-          <Route exact path='/' component={Home} />
+            <Route exact path="/" component={Home} />
+            <Route path="/:reviewId" component={IndividualReview} />
           </Switch>
         </main>
       </div>
