@@ -32,6 +32,28 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: "20px",
   },
+  formCard: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "spaceEvenly",
+    marginTop: "25px",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "spaceEvenly",
+    padding: "25px",
+  },
+  span: {
+    fontSize: "14px",
+    marginLeft: "25px",
+    color: "red",
+    marginBottom: "15px",
+  },
+  formField: {
+    padding: "15px",
+    border: "0",
+  },
 }));
 
 export default function IndividualReview(props) {
@@ -90,28 +112,34 @@ export default function IndividualReview(props) {
           </CardContent>
         </Card>
       ) : (
-        <Card>
-          <form onSubmit={handleSubmit}>
+        <Card className={classes.formCard}>
+          <form onSubmit={handleSubmit} className={classes.form}>
+            <Typography sx={{ mb: 1.5 }} color="primary" gutterBottom>
+              Write a response below:
+            </Typography>
             <TextField
               onChange={handleContentChange}
               placeholder="Message"
               name="content"
               value={response.content}
+              className={classes.formField}
             />
             {submitted && !response.content ? (
-              <span>Please enter a message</span>
+              <span className={classes.span}>Please enter a message</span>
             ) : null}
             <TextField
               onChange={handleNameChange}
               placeholder="Name"
               name="name"
               value={response.name}
+              className={classes.formField}
             />
             <TextField
               onChange={handleDateChange}
               placeholder="Date"
               name="date"
               value={response.date}
+              className={classes.formField}
             />
             <Button
               className={classes.button}
@@ -127,23 +155,6 @@ export default function IndividualReview(props) {
           </form>
         </Card>
       )}
-
-      {/*      
-        <Card sx={{ minWidth: 275 }} className={classes.review}>
-          <CardContent className={classes.content}>
-            <Typography gutterBottom>
-              {singleReview.response[0].content}
-            </Typography>
-          </CardContent>
-          <CardContent className={classes.second}>
-            <Typography sx={{ mb: 1.5 }} gutterBottom>
-              {singleReview.response[0].name}
-            </Typography>
-            <Typography align="right" gutterBottom className={classes.date}>
-              {singleReview.response[0].date}
-            </Typography>
-          </CardContent>
-        </Card> */}
     </div>
   );
 }
