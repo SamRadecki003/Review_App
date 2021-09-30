@@ -9,6 +9,7 @@ import {
   Typography,
   TextField,
 } from "@material-ui/core";
+import PopUpWindow from "./PopUpWindow";
 
 const useStyles = makeStyles((theme) => ({
   review: {
@@ -66,7 +67,6 @@ export default function IndividualReview(props) {
   }
   const classes = useStyles();
   const [singleReview] = useState(review);
-  //const [toDisable, setToDisable] = useState(true);
   const [response, setReponse] = useState({
     content: "",
     name: "",
@@ -75,23 +75,14 @@ export default function IndividualReview(props) {
 
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
+  const [edit, setEdit] = useState(false);
 
-  const handleContentChange = (event) => {
-    setReponse({ ...response, content: event.target.value });
-  };
-  const handleNameChange = (event) => {
-    setReponse({ ...response, name: event.target.value });
-  };
-  const handleDateChange = (event) => {
-    setReponse({ ...response, date: event.target.value });
-  };
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
     if (response.content) {
       setValid(true);
     }
-    console.log(response);
   };
 
   return (
@@ -100,6 +91,7 @@ export default function IndividualReview(props) {
       {submitted && valid ? (
         <Card sx={{ minWidth: 275 }} className={classes.review}>
           <CardContent className={classes.content}>
+            <PopUpWindow response={response} />
             <Typography gutterBottom>{response.content}</Typography>
           </CardContent>
           <CardContent className={classes.second}>
@@ -118,7 +110,9 @@ export default function IndividualReview(props) {
               Write a response below:
             </Typography>
             <TextField
-              onChange={handleContentChange}
+              onChange={(evt) =>
+                setReponse({ ...response, content: evt.target.value })
+              }
               placeholder="Message"
               name="content"
               value={response.content}
@@ -128,16 +122,24 @@ export default function IndividualReview(props) {
               <span className={classes.span}>Please enter a message</span>
             ) : null}
             <TextField
-              onChange={handleNameChange}
+              onChange={(evt) =>
+                setReponse({ ...response, name: evt.target.value })
+              }
               placeholder="Name"
               name="name"
               value={response.name}
               className={classes.formField}
             />
             <TextField
-              onChange={handleDateChange}
-              placeholder="Date"
-              name="date"
+              onChange={(evt) =>
+                setReponse({ ...response, date: evt.target.value })
+              }
+              id="date"
+              label="Date"
+              type="date"
+              InputLabelProps={{
+                shrink: true,
+              }}
               value={response.date}
               className={classes.formField}
             />

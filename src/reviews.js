@@ -7,13 +7,6 @@ const reviews = [
     rating: 5,
     content:
       "Ipsum mollit anim pariatur eu qui velit Lorem ea enim excepteur ut fugiat fugiat esse. Incididunt consectetur deserunt pariatur magna sit dolore voluptate. Minim cupidatat fugiat magna quis consectetur esse id esse adipisicing anim velit. Cillum mollit et nisi ex occaecat labore enim nulla cupidatat. Occaecat Lorem officia est sit enim amet commodo sunt occaecat reprehenderit Lorem culpa. Aute anim ullamco voluptate incididunt incididunt excepteur in irure.\r\n",
-    response: [
-      {
-        content: " so glad you enjoyed it!",
-        name: "John Doe",
-        date: "Thu Jun 28 1974",
-      },
-    ],
   },
   {
     id: "5d707203f1c60da307b00335",
@@ -23,13 +16,6 @@ const reviews = [
     rating: 2,
     content:
       "Occaecat ea est nulla dolore labore do cupidatat dolor laborum deserunt qui. Labore duis nisi sint in aliqua enim pariatur est nisi aliqua ullamco consequat id magna. Magna aliqua culpa sunt fugiat laboris enim aute sit. Sit nostrud quis Lorem culpa eu cupidatat est aliqua. Laboris voluptate exercitation proident aliquip ad voluptate do consectetur irure et. Eiusmod enim nostrud reprehenderit nulla cupidatat elit duis.\r\n",
-    response: [
-      {
-        content: "",
-        name: "",
-        date: "",
-      },
-    ],
   },
   {
     id: "5d7072035e3b9ab65839a7a7",
