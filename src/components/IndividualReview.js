@@ -11,7 +11,6 @@ import {
   TextField,
   Box,
 } from "@material-ui/core";
-// import PopUpWindow from "./PopUpWindow";
 
 const useStyles = makeStyles((theme) => ({
   review: {
@@ -150,8 +149,6 @@ export default function IndividualReview(props) {
                 type="submit"
                 color="primary"
                 fullWidth
-                // disabled={toDisable}
-                // onClick={}
               >
                 Edit
               </Button>
@@ -223,8 +220,6 @@ export default function IndividualReview(props) {
               type="submit"
               color="primary"
               fullWidth
-              // disabled={toDisable}
-              // onClick={}
             >
               Add a Response
             </Button>
