@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import reviews from "../reviews";
 import SingleReview from "./SingleReview";
 import { makeStyles } from "@material-ui/core/styles";
+import EditIcon from "@material-ui/icons/Edit";
 import {
   Card,
   Button,
   CardContent,
   Typography,
   TextField,
+  Box,
 } from "@material-ui/core";
-import PopUpWindow from "./PopUpWindow";
+// import PopUpWindow from "./PopUpWindow";
 
 const useStyles = makeStyles((theme) => ({
   review: {
@@ -55,6 +57,11 @@ const useStyles = makeStyles((theme) => ({
     padding: "15px",
     border: "0",
   },
+  editButton: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
 }));
 
 export default function IndividualReview(props) {
@@ -84,25 +91,92 @@ export default function IndividualReview(props) {
       setValid(true);
     }
   };
+  const handleEdit = (evt) => {
+    evt.preventDefault();
+    setEdit(true);
+  };
+  const handleEditSubmit = (evt) => {
+    evt.preventDefault();
+    setEdit(false);
+  };
 
   return (
     <div>
       <SingleReview review={singleReview} />
       {submitted && valid ? (
-        <Card sx={{ minWidth: 275 }} className={classes.review}>
-          <CardContent className={classes.content}>
-            <PopUpWindow response={response} />
-            <Typography gutterBottom>{response.content}</Typography>
-          </CardContent>
-          <CardContent className={classes.second}>
-            <Typography sx={{ mb: 1.5 }} gutterBottom>
-              {response.name}
-            </Typography>
-            <Typography align="right" gutterBottom className={classes.date}>
-              {response.date}
-            </Typography>
-          </CardContent>
-        </Card>
+        edit ? (
+          <Card className={classes.formCard}>
+            <form onSubmit={handleEditSubmit} className={classes.form}>
+              <Typography sx={{ mb: 1.5 }} color="primary" gutterBottom>
+                Edit Your Response
+              </Typography>
+              <TextField
+                onChange={(evt) =>
+                  setReponse({ ...response, content: evt.target.value })
+                }
+                placeholder="Message"
+                name="content"
+                value={response.content}
+                className={classes.formField}
+              />
+              {submitted && !response.content ? (
+                <span className={classes.span}>Please enter a message</span>
+              ) : null}
+              <TextField
+                onChange={(evt) =>
+                  setReponse({ ...response, name: evt.target.value })
+                }
+                placeholder="Name"
+                name="name"
+                value={response.name}
+                className={classes.formField}
+              />
+              <TextField
+                onChange={(evt) =>
+                  setReponse({ ...response, date: evt.target.value })
+                }
+                id="date"
+                label="Date"
+                type="date"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                value={response.date}
+                className={classes.formField}
+              />
+              <Button
+                className={classes.button}
+                variant="contained"
+                type="submit"
+                color="primary"
+                fullWidth
+                // disabled={toDisable}
+                // onClick={}
+              >
+                Edit
+              </Button>
+            </form>
+          </Card>
+        ) : (
+          <Card sx={{ minWidth: 275 }} className={classes.review}>
+            <CardContent className={classes.content}>
+              <Box className={classes.editButton}>
+                <Button onClick={handleEdit}>
+                  <EditIcon color="primary" />
+                </Button>
+              </Box>
+              <Typography gutterBottom>{response.content}</Typography>
+            </CardContent>
+            <CardContent className={classes.second}>
+              <Typography sx={{ mb: 1.5 }} gutterBottom>
+                {response.name}
+              </Typography>
+              <Typography align="right" gutterBottom className={classes.date}>
+                {response.date}
+              </Typography>
+            </CardContent>
+          </Card>
+        )
       ) : (
         <Card className={classes.formCard}>
           <form onSubmit={handleSubmit} className={classes.form}>
