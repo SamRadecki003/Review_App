@@ -49,6 +49,7 @@ export default function SingleReview(props) {
             {props.review.place}
           </Typography>
           <StarRatings
+            data-test="starRating"
             rating={props.review.rating}
             starRatedColor="#FFD700"
             numberOfStars={5}

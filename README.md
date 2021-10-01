@@ -10,7 +10,7 @@ Design and implement an application that lists reviews and allows a user to sele
   - Review published_at is visible
   - Review author is visible
 - [x] A view with a review’s complete details
-- [] A user can add a response to a review
+- [x] A user can add a response to a review
   - A review can only have one response
   - A response can be edited
   - A response should be shown with the rest of the review details

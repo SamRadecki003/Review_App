@@ -25,7 +25,6 @@ const reviews = [
     rating: 5,
     content:
       "Cupidatat enim amet incididunt id minim consequat. Ex voluptate ut aute officia exercitation consectetur qui ipsum velit pariatur. In cupidatat nulla consequat nostrud consectetur reprehenderit in. Ipsum excepteur mollit anim culpa nulla. Incididunt tempor veniam elit qui consectetur nisi.\r\n",
-    response: "",
   },
   {
     id: "5d707203ac281ba7cb5ded76",
@@ -35,7 +34,6 @@ const reviews = [
     rating: 2,
     content:
       "Ullamco ad consequat minim culpa quis sit id nulla. Ad sint do ea deserunt aliqua elit pariatur non quis aute Lorem dolore tempor. Eiusmod aliqua ut elit eiusmod tempor amet consequat nostrud incididunt. Ad ullamco aliquip dolor et ipsum in deserunt enim quis nisi et. Labore nulla ad culpa esse magna.\r\n",
-    response: "",
   },
   {
     id: "5d707203cbaeac7faefeed02",
