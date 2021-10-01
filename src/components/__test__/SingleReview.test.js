@@ -9,8 +9,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 });
 
-test("Render the auithor of the review", () => {
-  render(
+test("Render the author of the review", () => {
+  const component = render(
     <Router>
       <SingleReview
         review={{
@@ -27,15 +27,16 @@ test("Render the auithor of the review", () => {
     </Router>,
     container
   );
-  const author = screen.getByText(/Kelley Suarez/i);
-  expect(author).toBeInTheDocument();
+  const author = component.getByTestId("author");
+
+  expect(author.textContent).toBe("Kelley Suarez");
 });
 
-//Renders the star rating
-test("Renders the star rating", () => {
-  render(
+test("Displays the details button on all reviews page", () => {
+  const component = render(
     <Router>
       <SingleReview
+        button={true}
         review={{
           id: "5d707203ac281ba7cb5ded76",
           author: "Kelley Suarez",
@@ -50,8 +51,6 @@ test("Renders the star rating", () => {
     </Router>,
     container
   );
-  const author = screen.getByText(/Kelley Suarez/i);
-  expect(author).toBeInTheDocument();
+  const detailsBtn = component.getByTestId("button");
+  expect(detailsBtn.textContent).toBe("Details");
 });
-
-//shows the Details button

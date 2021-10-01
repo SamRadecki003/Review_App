@@ -49,7 +49,6 @@ export default function SingleReview(props) {
             {props.review.place}
           </Typography>
           <StarRatings
-            data-test="starRating"
             rating={props.review.rating}
             starRatedColor="#FFD700"
             numberOfStars={5}
@@ -57,21 +56,31 @@ export default function SingleReview(props) {
             starSpacing="5px"
             name="rating"
           />
-          <Typography variant="body2" className={classes.content}>
+          <Typography
+            variant="body2"
+            className={classes.content}
+            data-testid="content"
+          >
             {props.review.content}
           </Typography>
         </CardContent>
         <CardContent className={classes.second}>
-          <Typography sx={{ mb: 1.5 }} gutterBottom>
+          <Typography sx={{ mb: 1.5 }} gutterBottom data-testid="author">
             {props.review.author}
           </Typography>
-          <Typography align="right" className={classes.date} gutterBottom>
+          <Typography
+            align="right"
+            className={classes.date}
+            data-testid="date"
+            gutterBottom
+          >
             {date}
           </Typography>
         </CardContent>
         {props.button ? (
           <CardActions>
             <Button
+              data-testid="button"
               size="small"
               variant="contained"
               color="primary"

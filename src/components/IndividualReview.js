@@ -92,11 +92,7 @@ export default function IndividualReview(props) {
   };
   const handleEdit = (evt) => {
     evt.preventDefault();
-    setEdit(true);
-  };
-  const handleEditSubmit = (evt) => {
-    evt.preventDefault();
-    setEdit(false);
+    setEdit(!edit);
   };
 
   return (
@@ -105,7 +101,7 @@ export default function IndividualReview(props) {
       {submitted && valid ? (
         edit ? (
           <Card className={classes.formCard}>
-            <form onSubmit={handleEditSubmit} className={classes.form}>
+            <form onSubmit={handleEdit} className={classes.form}>
               <Typography sx={{ mb: 1.5 }} color="primary" gutterBottom>
                 Edit Your Response
               </Typography>
@@ -176,7 +172,11 @@ export default function IndividualReview(props) {
         )
       ) : (
         <Card className={classes.formCard}>
-          <form onSubmit={handleSubmit} className={classes.form}>
+          <form
+            data-testid="addResponseBtn"
+            onSubmit={handleSubmit}
+            className={classes.form}
+          >
             <Typography sx={{ mb: 1.5 }} color="primary" gutterBottom>
               Write a response below:
             </Typography>
@@ -188,6 +188,7 @@ export default function IndividualReview(props) {
               name="content"
               value={response.content}
               className={classes.formField}
+              inputProps={{ "data-testid": "message" }}
             />
             {submitted && !response.content ? (
               <span className={classes.span}>Please enter a message</span>
@@ -200,6 +201,7 @@ export default function IndividualReview(props) {
               name="name"
               value={response.name}
               className={classes.formField}
+              data-testid="name"
             />
             <TextField
               onChange={(evt) =>
@@ -213,6 +215,7 @@ export default function IndividualReview(props) {
               }}
               value={response.date}
               className={classes.formField}
+              data-testid="date"
             />
             <Button
               className={classes.button}
