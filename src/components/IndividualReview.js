@@ -158,7 +158,9 @@ export default function IndividualReview(props) {
                   <EditIcon color="primary" />
                 </Button>
               </Box>
-              <Typography gutterBottom>{response.content}</Typography>
+              <Typography data-testid="message" gutterBottom>
+                {response.content}
+              </Typography>
             </CardContent>
             <CardContent className={classes.second}>
               <Typography sx={{ mb: 1.5 }} gutterBottom>
@@ -172,11 +174,7 @@ export default function IndividualReview(props) {
         )
       ) : (
         <Card className={classes.formCard}>
-          <form
-            data-testid="addResponseBtn"
-            onSubmit={handleSubmit}
-            className={classes.form}
-          >
+          <form onSubmit={handleSubmit} className={classes.form}>
             <Typography sx={{ mb: 1.5 }} color="primary" gutterBottom>
               Write a response below:
             </Typography>
@@ -223,6 +221,7 @@ export default function IndividualReview(props) {
               type="submit"
               color="primary"
               fullWidth
+              data-testid="addResponseBtn"
             >
               Add a Response
             </Button>

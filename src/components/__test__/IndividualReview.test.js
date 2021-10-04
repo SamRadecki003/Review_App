@@ -1,6 +1,11 @@
-import { render, screen, fireEvent, Simulate } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import IndividualReview from "../IndividualReview";
 import { BrowserRouter as Router } from "react-router-dom";
+import Enzyme from "enzyme";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import React from "react";
+
+Enzyme.configure({ adapter: new Adapter() });
 
 let container = null;
 beforeEach(() => {
@@ -59,26 +64,26 @@ test("Response changes according to user input", () => {
   expect(message.value).toBe("This food place is amazing!!!");
 });
 
-// it("should submit the form when 'Add a Response' button is clicked", () => {
-//   const handleSubmit = jest.fn();
+test("Submits the form when 'Add a Response' button is clicked", () => {
+  let wrapper = render(
+    <Router>
+      <IndividualReview
+        match={{ params: { reviewId: "5d707203ac281ba7cb5ded76" } }}
+      />
+    </Router>,
+    container
+  );
 
-//   const component = render(
-//     <Router>
-//       <IndividualReview
-//         match={{ params: { reviewId: "5d707203ac281ba7cb5ded76" } }}
-//         onSubmit={handleSubmit}
-//       />
-//     </Router>,
-//     container
-//   );
-//   const message = component.getByTestId("message");
+  const message = wrapper.getByTestId("message");
 
-//   fireEvent.change(message, {
-//     target: {
-//       value: "This food place is amazing!!!",
-//     },
-//   });
-//   const addResponse = component.getByTestId("addResponseBtn");
-//   fireEvent.submit(addResponse);
-//   expect(handleSubmit).toBeCalled();
-// });
+  fireEvent.change(message, {
+    target: {
+      value: "I am not a fan of the food here :( ",
+    },
+  });
+
+  const addResponse = wrapper.getByTestId("addResponseBtn");
+  addResponse.click();
+
+  expect(message.value).toBe("I am not a fan of the food here :( ");
+});
